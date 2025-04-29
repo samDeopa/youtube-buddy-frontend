@@ -65,7 +65,11 @@ function VideoDetail() {
   const postComment = async () => {
     if (!newComment) return;
     try {
-      await api.post(`/videos/${id}/comments`, { text: newComment });
+      const comment = await api.post(`/videos/${id}/comments`, {
+        text: newComment,
+      });
+      console.log(comment);
+
       setNewComment("");
       fetchComments();
     } catch (err) {
