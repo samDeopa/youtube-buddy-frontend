@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-// URL of the backend API server
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
-
 function RedirectLogin() {
   useEffect(() => {
-    // Use relative path to leverage React proxy
-    window.location.href = "/auth/google";
+    // Redirect to Google login, using API URL if provided
+    const authUrl = process.env.REACT_APP_API_URL
+      ? `${process.env.REACT_APP_API_URL}/auth/google`
+      : "/auth/google";
+    window.location.href = authUrl;
   }, []);
 
   return (
